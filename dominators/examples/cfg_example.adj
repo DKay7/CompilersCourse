@@ -1,5 +1,7 @@
 # format should be:
 # src target1 target2 target3
+# pls. name `entry` and `exit` node **exactly** like that 
+# example from lecture 4, slide 14:
 entry b1
 b1 b2 b3
 b2 b3

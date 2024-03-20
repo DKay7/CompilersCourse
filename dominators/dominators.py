@@ -18,19 +18,19 @@ def main():
     imm_doms = compute_immediate_dominators(cfg, doms)
     print_immediate_dominators(imm_doms)
 
-    plot_dominators_tree(imm_doms)
+    dom_tree = create_dominators_tree(imm_doms)
+    plot_graph(dom_tree, 'dot')
 
     return
 
 
-def compute_dominance_frontier(cfg: nx.DiGraph):
-    pass
+def compute_dominance_frontier(cfg: nx.DiGraph, dom_tree: nx.DiGraph):
+    sink_nodes = [node for node in cfg.nodes if len(cfg.pred[node]) > 1]
 
 
-def plot_dominators_tree(immediate_dominators: dict):
+def create_dominators_tree(immediate_dominators: dict):
     dom_tree = nx.DiGraph(immediate_dominators)
-    plot_graph(dom_tree, 'dot')
-
+    return dom_tree
 
 def compute_immediate_dominators(cfg: nx.DiGraph, dominators: dict):
     immediate_dominators = dict()
