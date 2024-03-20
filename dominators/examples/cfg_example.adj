@@ -1,0 +1,14 @@
+# format should be:
+# src target1 target2 target3
+entry b1
+b1 b2 b3
+b2 b3
+b3 b4
+b4 b3 b5 b6
+b5 b7
+b6 b7
+b7 b4 b8
+b8 b9 b10
+b9 b1 exit
+b10 exit
+exit
