@@ -8,5 +8,6 @@ From this directory, execute:
 
 ## How-to use:
 To get help: `python3 dominators.py --help`
+
 Create file, like in examples and run `python3 dominators.py path/to/your/file`
 

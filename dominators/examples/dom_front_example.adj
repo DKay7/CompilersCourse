@@ -1,0 +1,11 @@
+# Example from lecture 4, slide 36
+entry b0
+b0 b1
+b1 b2 b3
+b2 b7
+b3 b4 b5
+b4 b6
+b5 b6
+b6 b7
+b7 b1
+b7 exit
