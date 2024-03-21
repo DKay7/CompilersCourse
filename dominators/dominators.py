@@ -3,12 +3,25 @@ import networkx as nx
 import sys
 from copy import deepcopy
 
+REVERSE = False
+
 def main():
     if len(sys.argv) <= 1 or 'help' in sys.argv[1].lower().strip():
         print_help_and_exit() 
     
     cfg = nx.read_adjlist(sys.argv[1], create_using=nx.DiGraph())
 
+    print("\n-----------------\nNORMAL GRAPH\n-----------------\n")
+    solve_all(cfg)
+    
+    print("\n-----------------\nREVERSED GRAPH\n-----------------\n")
+    cfg.reverse()
+    solve_all(cfg)
+    
+    return
+
+
+def solve_all(cfg: nx.DiGraph):
     print("\n\nDOMINATORS:")
     doms = compute_dominators(cfg)
     print_dominators(doms)
@@ -31,7 +44,6 @@ def main():
     print("\nDOMINANCE FRONTIER BY NETWORKX")
     nx_dom_front = nx.dominance_frontiers(cfg, 'entry')
     print_dominance_frontier(nx_dom_front)
-    return
 
 
 def compute_dominance_frontier(cfg: nx.DiGraph, immediate_dominators: dict):
