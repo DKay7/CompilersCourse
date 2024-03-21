@@ -14,10 +14,6 @@ def main():
     print("\n-----------------\nNORMAL GRAPH\n-----------------\n")
     solve_all(cfg)
     
-    print("\n-----------------\nREVERSED GRAPH\n-----------------\n")
-    cfg.reverse()
-    solve_all(cfg)
-    
     return
 
 
@@ -79,7 +75,7 @@ def compute_dominance_frontier(cfg: nx.DiGraph, immediate_dominators: dict):
 
 def create_dominators_tree(immediate_dominators: dict):
     dom_tree = nx.DiGraph()
-    dom_tree_edges = [edge for edge in immediate_dominators.items() if edge[1]]
+    dom_tree_edges = [edge[::-1] for edge in immediate_dominators.items() if edge[1]]
 
     dom_tree.add_nodes_from(immediate_dominators.keys())
     dom_tree.add_edges_from(dom_tree_edges)
@@ -166,7 +162,7 @@ def compute_dominators(cfg: nx.DiGraph):
 
 def plot_graph(graph, program='dot'):
     pos = nx.nx_agraph.graphviz_layout(graph, prog=program)
-    nx.draw(graph, with_labels=True)
+    nx.draw(graph, pos, with_labels=True)
     plt.show()
     return
 
